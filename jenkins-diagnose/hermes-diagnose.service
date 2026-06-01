@@ -1,0 +1,17 @@
+[Unit]
+Description=Hermes Diagnose HTTP Server
+After=network.target
+
+[Service]
+Type=forking
+User=zsh
+WorkingDirectory=/home/zsh/projects/hermes-ci-demo/jenkins-diagnose
+ExecStart=/home/zsh/projects/hermes-ci-demo/jenkins-diagnose/start_server.sh
+ExecStop=/home/zsh/projects/hermes-ci-demo/jenkins-diagnose/stop_server.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/tmp/hermes_diagnose_server.log
+StandardError=append:/tmp/hermes_diagnose_server.log
+
+[Install]
+WantedBy=multi-user.target
